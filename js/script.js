@@ -3,8 +3,10 @@ let headingsOnTable = [];
 let uploadedFileHeadings = [];
 let tableRow;
 let rowObject;
+let submittingFile = false;
 
 let errorElement = document.querySelector(".error-message");
+let successElement = document.querySelector(".success-message");
 
 const getHeadersFromTable = () => {
   return document.querySelectorAll("table span");
@@ -148,3 +150,40 @@ document.querySelector(".close-error-toast").addEventListener("click", () => {
     return false;
   };
 })();
+
+//Generic file upload function
+function startUpload() {
+  if (!submittingFile) {
+    //Deactivate save button while request is in progress
+    document
+      .querySelector(".upload-file")
+      .classList.add("upload-file-in-progress");
+
+    fetch("https://httpbin.org/anything", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: file,
+    })
+      .then((response) => response.json())
+      .then(function (data) {
+        if (data) {
+          successElement.classList.add("make-visible");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+
+document.querySelector(".upload-file").addEventListener("click", (event) => {
+  event.preventDefault();
+  startUpload();
+});
+
+//Close success message
+document.querySelector(".close-success-toast").addEventListener("click", () => {
+  successElement.classList.remove("make-visible");
+});

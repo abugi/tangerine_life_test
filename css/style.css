@@ -13,6 +13,7 @@ body {
   background-color: var(--main-background-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  color: #393939;
 }
 
 header {
@@ -72,6 +73,8 @@ table {
 .table-head {
   background-color: var(--main-background-color);
   text-align: left;
+  color: #8d8d8d;
+  font-weight: 500;
 }
 
 thead img {
@@ -88,11 +91,11 @@ td {
   border-bottom: 1px solid var(--main-background-color);
 }
 
-.error-message {
+.error-message,
+.success-message {
   position: absolute;
   right: 5%;
   width: 30%;
-  background-color: #f89191;
   padding: 1rem;
   border-radius: 7px;
   display: flex;
@@ -100,6 +103,15 @@ td {
   justify-content: space-between;
   color: #fff;
   visibility: hidden;
+}
+
+.error-message {
+  background-color: #f89191;
+}
+
+.success-message {
+  background-color: #bbe7ac;
+  color: #415251;
 }
 
 .error-message div {
@@ -110,7 +122,8 @@ td {
   padding-bottom: 0.5rem;
 }
 
-.close-error-toast {
+.close-error-toast,
+.close-success-toast {
   cursor: pointer;
 }
 
@@ -133,19 +146,18 @@ td {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 12rem;
+  padding: 8rem;
   background-color: #fafbfc;
   border-radius: 4px;
 }
 
 .upload-console-wrapper p {
   text-align: center;
-  font-size: 1.1rem;
+  color: #ccc;
 }
 
 .upload-console-wrapper .instruction {
   font-weight: 500;
-  font-size: 1.1rem;
   margin: 0.6rem 0;
 }
 
@@ -165,6 +177,30 @@ td {
 
 .input-file {
   display: none;
+}
+
+.cloud-icon {
+  width: 100%;
+  max-width: 120px;
+  margin: 1.5rem auto;
+}
+
+.cloud-icon img {
+  width: 100%;
+}
+
+.upload-file {
+  border: none;
+  cursor: pointer;
+}
+
+.upload-file-in-progress {
+  cursor: not-allowed;
+  background-color: var(--main-background-color);
+}
+
+.upload-file:focus {
+  outline: none;
 }
 
 @media only screen and (max-width: 740px) {

@@ -17,10 +17,20 @@
         </div>
         <img src="./icons/x.svg" class="close-error-toast" />
       </div>
+      <div class="success-message">
+        <img src="./icons/success-icon.svg" />
+        <h4>
+          File upload successfull!
+        </h4>
+        <img src="./icons/x.svg" class="close-success-toast" />
+      </div>
       <header>Upload</header>
       <section class="content upload-console-container">
         <div class="upload-console-wrapper">
           <div>
+            <div class="cloud-icon">
+              <img src="./icons/cloud.png" alt="Clod icon" />
+            </div>
             <p class="instruction">Drag and drop file here</p>
             <p>or</p>
             <button class="choose-file">Choose file</button>
@@ -31,7 +41,7 @@
       <section class="content uploaded-content hidden">
         <div class="content-title">
           <h2>Column Mapping</h2>
-          <button>Save</button>
+          <button class="upload-file">Save</button>
         </div>
         <table id="data-table" class="table">
           <thead>
