@@ -63,8 +63,7 @@ inputField.addEventListener("change", (event) => {
 });
 
 function CreateTableFromJSON(data) {
-  // EXTRACT VALUE FOR HTML HEADER.
-  // ('Book ID', 'Book Name', 'Category' and 'Price')
+  // Extract value from JSON to create table header
   const col = [];
   for (let i = 0; i < data.length; i++) {
     for (let key in data[i]) {
@@ -74,15 +73,14 @@ function CreateTableFromJSON(data) {
     }
   }
 
-  // CREATE DYNAMIC TABLE.
+  // Create table dynamically
   const table = document.createElement("table");
 
-  // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-  let tr = table.insertRow(-1); // TABLE ROW.
+  //Create HTML table header row using the extracted headers above
+  let tr = table.insertRow(-1);
 
   for (let i = 0; i < col.length; i++) {
-    const th = document.createElement("th"); // TABLE HEADER.
+    const th = document.createElement("th");
     const img = document.createElement("img");
     img.setAttribute("src", "./icons/code.svg");
     th.appendChild(img);
@@ -91,7 +89,7 @@ function CreateTableFromJSON(data) {
     tr.classList.add("table-head");
   }
 
-  // ADD JSON DATA TO THE TABLE AS ROWS.
+  //Dynamically add data to table row
   for (let i = 0; i < data.length; i++) {
     tr = table.insertRow(-1);
 
@@ -101,7 +99,7 @@ function CreateTableFromJSON(data) {
     }
   }
 
-  // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+  //Finally append the newly created table to the parent element
   const parsedDataTable = document.getElementById("data-table");
   const parsedDataContainer = document.querySelector(".uploaded-content");
   const upploadConsoleContainer = document.querySelector(
@@ -186,4 +184,11 @@ document.querySelector(".upload-file").addEventListener("click", (event) => {
 //Close success message
 document.querySelector(".close-success-toast").addEventListener("click", () => {
   successElement.classList.remove("make-visible");
+  const parsedDataContainer = document.querySelector(".uploaded-content");
+  const upploadConsoleContainer = document.querySelector(
+    ".upload-console-container"
+  );
+
+  upploadConsoleContainer.classList.remove("hidden");
+  parsedDataContainer.classList.add("hidden");
 });
