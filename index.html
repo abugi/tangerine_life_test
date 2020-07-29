@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.4/xlsx.full.min.js"></script>
+    <title>Tangerine Life Assessment</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="error-message">
+        <img src="./icons/error-icon.svg" />
+        <div>
+          <h3>Colunm headers do not match!</h3>
+          Upload a valid Excel file with matching column headers
+        </div>
+        <img src="./icons/x.svg" class="close-error-toast" />
+      </div>
+      <header>Upload</header>
+      <section class="content">
+        <input type="file" class="input-file" accept=".xls, .xlsx" />
+      </section>
+      <section class="content">
+        <div class="content-title">
+          <h2>Column Mapping</h2>
+          <button>Save</button>
+        </div>
+        <table id="data-table" class="table">
+          <thead>
+            <th>
+              <span>
+                Fullname
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Phone Number
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Address
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                State
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                LGA
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Date of Birth
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Salary
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Gender
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Call Allowance
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+            <th>
+              <span>
+                Transport Allowance
+              </span>
+              <img src="./icons/code.svg" alt="sort icon" />
+            </th>
+          </thead>
+        </table>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
