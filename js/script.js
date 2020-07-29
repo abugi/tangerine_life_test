@@ -25,6 +25,7 @@ const compareTheHeaders = (uploadedFileData) => {
     errorElement.classList.add("make-visible");
     return;
   } else {
+    errorElement.classList.remove("make-visible");
     CreateTableFromJSON(rowObject);
   }
 };
@@ -49,7 +50,12 @@ const readDataFromFile = () => {
 };
 
 //Handle file upload
-document.querySelector(".input-file").addEventListener("change", (event) => {
+const inputField = document.querySelector(".input-file");
+const chooseFile = document.querySelector(".choose-file");
+chooseFile.addEventListener("click", () => {
+  inputField.click();
+});
+inputField.addEventListener("change", (event) => {
   file = event.target.files[0];
   readDataFromFile();
 });
@@ -94,12 +100,51 @@ function CreateTableFromJSON(data) {
   }
 
   // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-  const divContainer = document.getElementById("data-table");
-  divContainer.innerHTML = "";
-  divContainer.appendChild(table);
-  divContainer.classList.add("make-visible");
+  const parsedDataTable = document.getElementById("data-table");
+  const parsedDataContainer = document.querySelector(".uploaded-content");
+  const upploadConsoleContainer = document.querySelector(
+    ".upload-console-container"
+  );
+  parsedDataTable.innerHTML = "";
+  parsedDataTable.appendChild(table);
+  parsedDataTable.classList.add("make-visible");
+  upploadConsoleContainer.classList.add("hidden");
+  parsedDataContainer.classList.remove("hidden");
 }
 
 document.querySelector(".close-error-toast").addEventListener("click", () => {
   errorElement.classList.remove("make-visible");
 });
+
+//Drag and drop funcitonality
+(function () {
+  "use strict";
+
+  const dropZone = document.querySelector(".upload-console-wrapper");
+
+  dropZone.ondrop = function (event) {
+    event.preventDefault();
+    file = event.dataTransfer.files[0];
+
+    //Ensure the uploaded file is .xls or .xlsx format
+    if (
+      file.type === "application/vnd.ms-excel" ||
+      file.type ===
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ) {
+      errorElement.classList.remove("make-visible");
+      readDataFromFile();
+    } else {
+      errorElement.classList.add("make-visible");
+      return;
+    }
+  };
+
+  dropZone.ondragover = function () {
+    return false;
+  };
+
+  dropZone.ondragleave = function () {
+    return false;
+  };
+})();

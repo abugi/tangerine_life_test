@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.4/xlsx.full.min.js"></script>
     <title>Tangerine Life Assessment</title>
   </head>
@@ -12,16 +12,23 @@
       <div class="error-message">
         <img src="./icons/error-icon.svg" />
         <div>
-          <h3>Colunm headers do not match!</h3>
+          <h3>Invalid file!</h3>
           Upload a valid Excel file with matching column headers
         </div>
         <img src="./icons/x.svg" class="close-error-toast" />
       </div>
       <header>Upload</header>
-      <section class="content">
-        <input type="file" class="input-file" accept=".xls, .xlsx" />
+      <section class="content upload-console-container">
+        <div class="upload-console-wrapper">
+          <div>
+            <p class="instruction">Drag and drop file here</p>
+            <p>or</p>
+            <button class="choose-file">Choose file</button>
+            <input type="file" class="input-file" accept=".xls, .xlsx" />
+          </div>
+        </div>
       </section>
-      <section class="content">
+      <section class="content uploaded-content hidden">
         <div class="content-title">
           <h2>Column Mapping</h2>
           <button>Save</button>
@@ -92,6 +99,6 @@
         </table>
       </section>
     </main>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
